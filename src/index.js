@@ -4,7 +4,9 @@ const app = express();
 // Handling the Client Request
 // http://localhost:4000/
 app.get("/", function (req, res) {
-  res.json({});
+  let username = req.query.username;
+  let password = req.query.password;
+  res.json({ username: username, password: password });
 });
 
 // http://localhost:4000/users
@@ -28,6 +30,38 @@ app.get("/users/:id", (req, res) => {
   };
 
   res.json(user);
+});
+
+// http://localhost:4000/posts
+app.get("/posts/", (req, res) => {
+  let list = [];
+  let post1 = {
+    id: 1,
+    title: "afda asdfaf asfasfdsa",
+    body: "asdfaf asf adsfads",
+  };
+  let post2 = {
+    id: 2,
+    title: "afda asdfaf asfasfdsa",
+    body: "asdfaf asf adsfads",
+  };
+
+  list.push(post1);
+  list.push(post2);
+
+  res.json(list);
+});
+
+// http://localhost:4000/posts/1
+// http://localhost:4000/posts/2
+app.get("/posts/:postid", (req, res) => {
+  let post = {
+    id: req.params.postid,
+    title: "adfaf",
+    body: "asdf dfads fadsf asdfasdf asdfasd fdasf ads",
+  };
+
+  res.json(post);
 });
 
 app.listen(4000);
