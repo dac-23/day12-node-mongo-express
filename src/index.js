@@ -19,9 +19,10 @@ app.get("/users/", (req, res) => {
 });
 
 // http://localhost:4000/users/1
-app.get("/users/1", (req, res) => {
+// http://localhost:4000/users/2
+app.get("/users/:id", (req, res) => {
   let user = {
-    id: 1,
+    id: req.params.id,
     name: "rohit",
     email: "rohit@gmail.com",
   };
