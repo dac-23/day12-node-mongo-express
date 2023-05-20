@@ -75,6 +75,7 @@ app.post("/user/", async (req, res) => {
 
 // DELETE
 // DELETE ONE USER
+// http://localhost:4000/user/646866fe5d8996044b96ce6c
 app.delete("/user/:id", async (req, res) => {
   const uri = "mongodb://localhost:27017";
   const client = new MongoClient(uri);
@@ -84,6 +85,8 @@ app.delete("/user/:id", async (req, res) => {
   await db.collection("user").deleteOne({ _id: id });
 
   await client.close();
+
+  res.json({ opr: true });
 });
 
 app.listen(4000);
