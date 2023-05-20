@@ -3,25 +3,28 @@ import cors from "cors";
 const app = express();
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-// Whitelisting all the request
 app.use(cors());
 
-// Handling the Client Request
 // http://localhost:4000/
 app.get("/", function (req, res) {
-  let username = req.query.username;
-  let password = req.query.password;
-  res.json({ username: username, password: password });
+  res.json({});
 });
 
+// GET
+// GET ME ALL THE USERs
+app.get("/users");
+
+// GET
+// GET ME USER WHER ID IS PARAM
+app.get("/users/:id");
+
 // POST
+// Create New User
 // http://localhost:4000/user
-app.post("/user/", (req, res) => {
-  // logic is missign...
-  // db logic
-  console.log(req.body);
-  res.json({ msg: "im post" });
-});
+app.post("/user/");
+
+// DELETE
+// DELETE ONE USER
+app.delete("/user/:id");
 
 app.listen(4000);
